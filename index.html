@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Lokiiii 🤍</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Georgia',serif;
+}
+
+body{
+  background:linear-gradient(to bottom,#0a0005,#000);
+  color:#f5e6ee;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  opacity:0.6;
+  animation:float 9s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);opacity:0}
+  20%{opacity:1}
+  100%{transform:translateY(-120vh);opacity:0}
+}
+
+/* Sections */
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+}
+
+button{
+  margin-top:35px;
+  padding:12px 32px;
+  background:transparent;
+  border:1px solid #f5e6ee;
+  color:#f5e6ee;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.4s;
+}
+button:hover{
+  background:#f5e6ee;
+  color:#000;
+}
+
+/* Cartoon Couple */
+.couple{
+  font-size:70px;
+  animation:bounce 2.5s infinite alternate;
+  margin-bottom:20px;
+}
+@keyframes bounce{
+  from{transform:translateY(0)}
+  to{transform:translateY(-12px)}
+}
+
+/* Photo Frame */
+.photo{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:3px solid #f5e6ee;
+  object-fit:cover;
+  margin-bottom:20px;
+}
+
+/* Letters */
+.letters{
+  display:flex;
+  gap:25px;
+  margin-top:25px;
+}
+.letter{
+  font-size:42px;
+  border:1px solid #f5e6ee;
+  padding:18px 28px;
+  cursor:pointer;
+  transition:0.6s;
+}
+.letter:hover{
+  background:#f5e6ee;
+  color:#000;
+}
+.meaning{
+  margin-top:25px;
+  font-size:18px;
+  opacity:0;
+  transition:1.5s;
+}
+
+/* Message */
+.message{
+  max-width:750px;
+  font-size:18px;
+  line-height:1.9;
+  animation:fade 3s forwards;
+}
+
+.rose{
+  font-size:60px;
+  animation:bloom 4s infinite alternate;
+}
+@keyframes bloom{
+  from{transform:scale(0.8)}
+  to{transform:scale(1.15)}
+}
+
+@keyframes fade{
+  from{opacity:0}
+  to{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 DUDE BGM (YOU ADD FILE) -->
+<audio autoplay loop>
+  <source src="dude-bgm.mp3" type="audio/mpeg">
+</audio>
+
+<!-- INTRO -->
+<section id="intro">
+  <h1>
+    Some love stories begin loudly…<br>
+    Ours began quietly,<br>
+    with trust.
+  </h1>
+  <button onclick="go('letters')">Begin</button>
+</section>
+
+<!-- LETTERS -->
+<section id="letters" style="display:none;">
+  <div class="couple">👩‍❤️‍👨</div>
+
+  <!-- OPTIONAL PHOTO (replace file name if you want) -->
+  <!-- If you don't want photo, delete next line -->
+  <img src="lokiiii.jpg" class="photo" alt="Lokiiii">
+
+  <h2>Not words… but truths.</h2>
+
+  <div class="letters">
+    <div class="letter" onclick="meaning('Loyal to you, even in silence')">L</div>
+    <div class="letter" onclick="meaning('Only you felt like home')">O</div>
+    <div class="letter" onclick="meaning('Voice that made me fall')">V</div>
+    <div class="letter" onclick="meaning('Every future has you')">E</div>
+  </div>
+
+  <div class="meaning" id="meaning"></div>
+  <button onclick="go('story1')">Continue</button>
+</section>
+
+<!-- STORY 1 -->
+<section id="story1" style="display:none;">
+  <div class="couple">👩‍💼➡️👨‍🏫</div>
+  <div class="message">
+    I met you on my first job.<br><br>
+    You trained me with patience,<br>
+    corrected me gently,<br>
+    guided me silently.<br><br>
+    I called you <b>bro</b>,<br>
+    while my heart memorized your voice.
+  </div>
+  <button onclick="go('story2')">Next</button>
+</section>
+
+<!-- STORY 2 -->
+<section id="story2" style="display:none;">
+  <div class="couple">🎧🤍</div>
+  <div class="message">
+    I didn’t fall suddenly.<br><br>
+    I fell slowly…<br>
+    through your care,<br>
+    your calm,<br>
+    your presence.<br><br>
+    Quiet love.<br>
+    Real love.
+  </div>
+  <button onclick="go('final')">Final</button>
+</section>
+
+<!-- FINAL -->
+<section id="final" style="display:none;">
+  <div class="rose">🌹</div>
+  <h1>Lokiiii…</h1>
+  <p class="message">
+    I am serious about you.<br>
+    About us.<br><br>
+    Not for moments,<br>
+    but for a lifetime.<br><br>
+    I choose you.<br>
+    Always.
+  </p>
+</section>
+
+<script>
+function go(id){
+  document.querySelectorAll("section").forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="flex";
+}
+
+function meaning(text){
+  let m=document.getElementById("meaning");
+  m.innerText=text;
+  m.style.opacity=1;
+}
+
+/* Hearts */
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerText="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(6+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+},600);
+</script>
+
+</body>
+</html>
